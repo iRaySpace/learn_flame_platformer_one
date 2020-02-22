@@ -39,4 +39,12 @@ class ComponentEntity extends PositionComponent {
     this._vx = vx;
     this._vy = vy;
   }
+
+  void setVelocityX(double vx) {
+    this._vx = vx;
+  }
+
+  void setVelocityY(double vy) {
+    this._vy = vy;
+  }
 }

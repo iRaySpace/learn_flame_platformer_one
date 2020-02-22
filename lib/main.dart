@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:flame/util.dart';
 import 'package:flame/gestures.dart';
+import 'package:learn_flame_platformer_one/components/platform.dart';
 import 'components/button.dart';
 import 'components/entity.dart';
 
@@ -17,6 +18,7 @@ class PlatformerOne extends Game with TapDetector {
     _leftButton = ComponentButton(0.0, 0.0),
     _rightButton = ComponentButton(0.0, 0.0),
     _actionButton = ComponentButton(0.0, 0.0),
+    _platform = ComponentPlatform(0.0, 0.0),
     _player = ComponentEntity(0.0, 0.0) {
       _initButtons();
     }
@@ -25,10 +27,12 @@ class PlatformerOne extends Game with TapDetector {
   final ComponentButton _rightButton;
   final ComponentButton _actionButton;
   final ComponentEntity _player;
+  final ComponentPlatform _platform;
 
   @override
   void render(Canvas canvas) {
     _player.render(canvas);
+    _platform.render(canvas);
     _leftButton.render(canvas);
     _rightButton.render(canvas);
     _actionButton.render(canvas);
@@ -49,6 +53,8 @@ class PlatformerOne extends Game with TapDetector {
       Position(_leftButton.width + 9.0, size.height - _rightButton.height));
     _actionButton.setByPosition(
       Position(size.width - _actionButton.width, size.height - _actionButton.height));
+    _platform.setByPosition(
+      Position(0.0, size.height / 2 + _platform.height));
   }
 
   @override

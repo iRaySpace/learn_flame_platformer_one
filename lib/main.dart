@@ -40,13 +40,18 @@ class PlatformerOne extends Game with TapDetector {
 
   @override
   void update(double t) {
+    if (_player.toRect().overlaps(_platform.toRect())) {
+      _player.isGrounded = true;
+    } else {
+      _player.isGrounded = false;
+    }
     _player.update(t);
   }
 
   @override
   void resize(Size size) {
     _player.setByPosition(
-      Position(10.0, size.height / 2));
+      Position(10.0, 50.0));
     _leftButton.setByPosition(
       Position(0.0, size.height - _leftButton.height));
     _rightButton.setByPosition(
@@ -91,6 +96,10 @@ class PlatformerOne extends Game with TapDetector {
     // _actionButton
     _actionButton.onButtonDown = () {
       _player.setVelocityY(-200.0);
+      _player.isJumping = true;
+    };
+    _actionButton.onButtonUp = () {
+      _player.isJumping = false;
     };
   }
 }

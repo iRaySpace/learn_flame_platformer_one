@@ -11,6 +11,8 @@ class ComponentEntity extends PositionComponent {
     width = 36.0;
     height = 36.0;
     gravity = 9.8;
+    isGrounded = false;
+    isJumping = false;
     Paint paint = Paint();
     paint.color = Color(0xFF00FF00);
     this._paint = paint;
@@ -20,6 +22,8 @@ class ComponentEntity extends PositionComponent {
   double _vx;
   double _vy;
   double gravity;
+  bool isGrounded;
+  bool isJumping;
 
   @override
   void render(Canvas c) {
@@ -28,7 +32,11 @@ class ComponentEntity extends PositionComponent {
 
   @override
   void update(double t) {
-    this._vy = this._vy + gravity;
+    if (isGrounded == true && isJumping == false) {
+      this._vy = 0.0;
+    } else {
+      this._vy = this._vy + gravity;
+    }
     this.x = this.x + (this._vx * t);
     this.y = this.y + (this._vy * t);
   }

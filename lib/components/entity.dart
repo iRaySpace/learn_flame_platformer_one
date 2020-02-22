@@ -10,6 +10,7 @@ class ComponentEntity extends PositionComponent {
     _vy = 0.0;
     width = 36.0;
     height = 36.0;
+    gravity = 9.8;
     Paint paint = Paint();
     paint.color = Color(0xFF00FF00);
     this._paint = paint;
@@ -18,6 +19,7 @@ class ComponentEntity extends PositionComponent {
   Paint _paint;
   double _vx;
   double _vy;
+  double gravity;
 
   @override
   void render(Canvas c) {
@@ -26,6 +28,7 @@ class ComponentEntity extends PositionComponent {
 
   @override
   void update(double t) {
+    this._vy = this._vy + gravity;
     this.x = this.x + (this._vx * t);
     this.y = this.y + (this._vy * t);
   }

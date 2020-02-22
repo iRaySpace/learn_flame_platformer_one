@@ -72,10 +72,25 @@ class PlatformerOne extends Game with TapDetector {
   }
 
   void _initButtons() {
-    _leftButton.onButtonDown = () => _player.setVelocity(-200.0, 0.0);
-    _rightButton.onButtonDown = () => _player.setVelocity(200.0, 0.0);
-    // _actionButton.onPressed = () => _player.moveBy(0.0, -3.0);
-    _leftButton.onButtonUp = () => _player.setVelocity(0.0, 0.0);
-    _rightButton.onButtonUp = () => _player.setVelocity(0.0, 0.0);
+    // _leftButton
+    _leftButton.onButtonDown = () {
+      _player.setVelocityX(-200.0);
+    };
+    _leftButton.onButtonUp = () {
+      _player.setVelocityX(0.0);
+    };
+
+    // _rightButton
+    _rightButton.onButtonDown = () {
+      _player.setVelocityX(200.0);
+    };
+    _rightButton.onButtonUp = () {
+      _player.setVelocityX(0.0);
+    };
+
+    // _actionButton
+    _actionButton.onButtonDown = () {
+      _player.setVelocityY(-200.0);
+    };
   }
 }
